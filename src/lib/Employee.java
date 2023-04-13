@@ -6,17 +6,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Employee extends Person{
-    
-    public enum listGender{
-        male,
-        female
-    };
-
-    
-    private String employeeId;
-    private String address;
-    private listGender gender;
+public class Employee extends Personal_Info{
     
     private Date dateJoined;
     private int monthWorkingInYear;
