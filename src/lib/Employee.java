@@ -13,12 +13,11 @@ public class Employee extends Person{
         female
     };
 
-    //Person
+    
     private String employeeId;
     private String address;
     private listGender gender;
     
-    //Stay
     private Date dateJoined;
     private int monthWorkingInYear;
     private boolean isForeigner;
@@ -27,7 +26,6 @@ public class Employee extends Person{
     private int otherMonthlyIncome;
     private int annualDeductible;
 
-    //Family
     private Person spouse;
     private final List<String> childNames;
     private final List<String> childIdNumbers;
