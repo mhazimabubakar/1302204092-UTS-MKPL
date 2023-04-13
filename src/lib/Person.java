@@ -38,5 +38,9 @@ public class Person {
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }    
+
+    void add(String firstName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
