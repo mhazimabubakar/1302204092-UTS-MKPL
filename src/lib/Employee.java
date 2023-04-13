@@ -20,24 +20,27 @@ public class Employee extends Personal_Info{
     private final List<String> childNames;
     private final List<String> childIdNumbers;
 
-    public Employee(String employeeId, String firstName, String lastName, String idNumber, String firstNameSpouse, String idNumberSpouse, String lastNameSpouse, String address, Date dateJoined, boolean isForeigner, listGender gender) {
-        this.employeeId = employeeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.idNumber = idNumber;
+    public Employee(Personal_Info person, Person spouse, Date dateJoined, boolean isForeigner) {
         
-        spouse = new Person();
-        spouse.firstName = firstNameSpouse;
-        spouse.lastName = lastNameSpouse;
-        spouse.idNumber = idNumberSpouse;
+        this.setEmployeeId(person.getEmployeeId());
+        this.setFirstName(person.getFirstName());
+        this.setLastName(person.getLastName());
+        this.setIdNumber(person.getIdNumber());
+        this.setAddress(person.getAddress());
+        this.setGender(person.getGender());
         
-        this.address = address;
-        this.dateJoined = dateJoined;
-        this.isForeigner = isForeigner;
-        this.gender = gender;
-
+        this.spouse = spouse;
         childNames = new LinkedList<String>();
         childIdNumbers = new LinkedList<String>();
+        
+        this.dateJoined = dateJoined;
+        this.isForeigner = isForeigner;
+
+    }
+    
+    public void addChild(String childName, String childIdNumber) {
+        childNames.add(childName);
+        childIdNumbers.add(childIdNumber);
     }
 
     /**
@@ -70,11 +73,6 @@ public class Employee extends Personal_Info{
 
     public void setAdditionalIncome(int income) {	
         this.otherMonthlyIncome = income;
-    }
-
-    public void addChild(String childName, String childIdNumber) {
-        childNames.add(childName);
-        childIdNumbers.add(childIdNumber);
     }
 
     public int getAnnualIncomeTax() {
