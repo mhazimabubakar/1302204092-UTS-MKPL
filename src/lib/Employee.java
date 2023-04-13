@@ -6,40 +6,41 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Employee {
+public class Employee extends Person{
     
     public enum listGender{
         male,
         female
     };
 
+    
     private String employeeId;
-    private String firstName;
-    private String lastName;
-    private String idNumber;
     private String address;
-
+    private listGender gender;
+    
     private Date dateJoined;
     private int monthWorkingInYear;
-
     private boolean isForeigner;
-    private listGender gender;
 
     private int monthlySalary;
     private int otherMonthlyIncome;
     private int annualDeductible;
 
-    private String spouseName;
-    private String spouseIdNumber;
+    private Person spouse;
+    private final List<String> childNames;
+    private final List<String> childIdNumbers;
 
-    private List<String> childNames;
-    private List<String> childIdNumbers;
-
-    public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, Date dateJoined, boolean isForeigner, listGender gender) {
+    public Employee(String employeeId, String firstName, String lastName, String idNumber, String firstNameSpouse, String idNumberSpouse, String lastNameSpouse, String address, Date dateJoined, boolean isForeigner, listGender gender) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.idNumber = idNumber;
+        
+        spouse = new Person();
+        spouse.firstName = firstNameSpouse;
+        spouse.lastName = lastNameSpouse;
+        spouse.idNumber = idNumberSpouse;
+        
         this.address = address;
         this.dateJoined = dateJoined;
         this.isForeigner = isForeigner;
@@ -81,11 +82,6 @@ public class Employee {
         this.otherMonthlyIncome = income;
     }
 
-    public void setSpouse(String spouseName, String spouseIdNumber) {
-        this.spouseName = spouseName;
-        this.spouseIdNumber = idNumber;
-    }
-
     public void addChild(String childName, String childIdNumber) {
         childNames.add(childName);
         childIdNumbers.add(childIdNumber);
@@ -102,6 +98,6 @@ public class Employee {
             monthWorkingInYear = 12;
         }
 
-        return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, spouseIdNumber.equals(""), childIdNumbers.size());
+        return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, spouse.idNumber.equals(""), childIdNumbers.size());
     }
 }
